@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Student Task Management System</title>
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/styles.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Lewati ke konten</a>
+  <header class="site-header">
+    <a class="brand" href="/">Student Task Management System</a>
+    <nav class="header-actions" aria-label="Akun dan dokumentasi">
+      <a class="docs-link" href="/docs" target="_blank" rel="noopener">Dokumentasi API</a>
+      <div id="account" class="account" hidden><strong id="user-name"></strong><span id="user-role"></span></div>
+      <button id="logout" class="button secondary" hidden>Keluar</button>
+    </nav>
+  </header>
+  <main id="main" tabindex="-1">
+    <div id="notice" class="notice" role="status" aria-live="polite" tabindex="-1" hidden></div>
+    <section id="auth-view" class="auth-layout" aria-labelledby="auth-title">
+      <section class="panel auth-panel">
+        <div class="auth-tabs" aria-label="Pilih masuk atau daftar">
+          <button type="button" id="show-login" aria-pressed="true">Masuk</button>
+          <button type="button" id="show-register" aria-pressed="false">Daftar mahasiswa</button>
+        </div>
+        <h1 id="auth-title">Masuk</h1>
+        <p id="auth-description" class="muted">Masukkan email dan password.</p>
+        <form id="auth-form">
+          <div id="name-field" class="field" hidden>
+            <label for="full-name">Nama lengkap</label>
+            <input id="full-name" name="full_name" autocomplete="name" maxlength="100">
+          </div>
+          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="username" placeholder="nama@example.com" maxlength="254" required></div>
+          <div class="field"><label for="password">Password</label><input id="password" name="password" type="password" autocomplete="current-password" required aria-describedby="password-help"><small id="password-help">Gunakan password akunmu.</small></div>
+          <button id="auth-submit" class="button primary" type="submit">Masuk</button>
+        </form>
+        <details class="lecturer-help"><summary>Cara membuat akun dosen</summary><p>Jalankan perintah berikut di terminal proyek, lalu tentukan password.</p><code>.\.venv\Scripts\python.exe -m app.cli dosen@example.com --name "Dosen Pengampu"</code></details>
+      </section>
+    </section>
+    <section id="workspace" hidden aria-labelledby="workspace-title">
+      <div class="page-heading">
+        <h1 id="workspace-title">Tugas</h1>
+        <div class="actions"><button id="reload" class="button secondary">Muat ulang</button><button id="new-task" class="button primary" hidden>Buat tugas</button></div>
+      </div>
+      <div class="workspace-grid">
+        <aside class="panel task-panel" aria-labelledby="list-title">
+          <div class="list-heading"><h2 id="list-title">Daftar tugas</h2><p id="task-count" class="muted">Memuat tugas…</p></div>
+          <div id="task-list" class="task-list"></div>
+          <button id="more-tasks" class="button secondary full" hidden>Muat lebih banyak tugas</button>
+        </aside>
+        <section id="detail" class="panel detail-panel" aria-label="Detail tugas" tabindex="-1"><p class="empty">Pilih tugas untuk mulai.</p></section>
+      </div>
+    </section>
+  </main>
+  <noscript><p class="notice">Aktifkan JavaScript untuk menggunakan ruang tugas ini. Dokumentasi API tetap tersedia di <a href="/docs">/docs</a>.</p></noscript>
+</body>
+</html>
